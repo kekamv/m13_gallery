@@ -1,0 +1,25 @@
+CREATE SCHEMA IF NOT EXISTS `gallery` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
+USE `gallery`;
+
+CREATE TABLE IF NOT EXISTS `gallery`.`galleries`(
+`id` INT AUTO_INCREMENT,
+`name` VARCHAR (150) NOT NULL ,
+`max_capacity` LONG NOT NULL,
+PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS `gallery`.`paintings`(
+`id` INT AUTO_INCREMENT,
+`author` VARCHAR(90),
+`title` VARCHAR(150) NOT NULL,
+`price` DOUBLE NOT NULL,
+`entry_date`DATE NOT NULL,
+`galleries_id` INT NOT NULL,
+PRIMARY KEY (`id`),
+INDEX `fk_galleries1_idx` (`galleries_id` ASC),
+CONSTRAINT `fk_galleries1`
+	FOREIGN KEY (`galleries_id`)
+	REFERENCES `gallery`.`galleries`(`id`)
+	ON DELETE CASCADE
+	ON UPDATE CASCADE)
+ENGINE = InnoDB;

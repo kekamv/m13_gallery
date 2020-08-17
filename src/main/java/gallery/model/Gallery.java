@@ -12,11 +12,9 @@ public class Gallery {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonIgnore
     private Long id;
-    @Column(nullable = false)
     private String name;
-
-    @Column(nullable = false)
-    private long maxcapacity;
+    @Column(name="max_capacity")
+    private long maxCapacity;
 
     @OneToMany(mappedBy = "gallery", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Painting> paintings;
@@ -24,9 +22,9 @@ public class Gallery {
 
     private Gallery(){}
 
-    public Gallery(String name, long maxcapacity) {
+    public Gallery(String name, long maxCapacity) {
         this.name = name;
-        this.maxcapacity = maxcapacity;
+        this.maxCapacity = maxCapacity;
     }
     public Long getId() {
         return id;
@@ -41,10 +39,10 @@ public class Gallery {
     }
 
     public long getMaxCapacity() {
-        return maxcapacity;
+        return maxCapacity;
     }
 
-    public void setMaxCapacity(long maxcapacity) {
-        this.maxcapacity = maxcapacity;
+    public void setMaxCapacity(long maxCapacity) {
+        this.maxCapacity = maxCapacity;
     }
 }

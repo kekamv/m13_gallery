@@ -35,7 +35,7 @@ public class PaintingServiceImpl implements IPaintingService {
     public Painting createPainting(Painting painting, Long galleryId) {
 
         if(painting.getTitle().length()<3 ||painting.getPrice()<=50){
-            throw new IllegalArgumentException("Author name should cointain at least 3 characters"+
+            throw new IllegalArgumentException("Title name should cointain at least 3 characters"+
                     "and price should not be greater than 50");
         }
 
